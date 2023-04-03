@@ -1,0 +1,25 @@
+const [color, setColor] = useState([]);
+const [size, setSize] = useState([]);
+
+
+const handleColor = (e) => {
+    setColor((prev) => {
+      return { ...prev, [e]: e.target.value.split(",") };
+    });
+  };
+  const handleSize = (e) => {
+    setSize((prev) => {
+      return { ...prev, [e]:e.target.value.split(",") };
+    });
+};
+
+const createProductSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const myForm = new FormData();
+
+    myForm.set("color", color);
+    myForm.set("size", size);
+
+    dispatch(createProduct(myForm));
+};
