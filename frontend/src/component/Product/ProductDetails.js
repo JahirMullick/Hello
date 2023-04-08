@@ -10,7 +10,7 @@ import {
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-// import MetaData from "../layout/MetaData";
+import MetaData from "../layout/MetaData";
 import { addItemsToCart } from "../../actions/cartAction";
 import {
   Dialog,
@@ -51,6 +51,8 @@ const ProductDetails = ({ match }) => {
   console.log(color);
   console.log(size);
 
+
+
   const handleColorChange = (event) => {
     setColor(event.target.value);
   };
@@ -81,6 +83,12 @@ const ProductDetails = ({ match }) => {
   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
   };
+
+  // const colorarr = product.color?.split(",")?.map(item => `"${item.trim()}"`)?.join(",");
+  // console.log(colorarr);
+
+  // const sizearr = product.size?.split(",")?.map(item => `"${item.trim()}"`)?.join(",");
+  // console.log(sizearr);
 
   const reviewSubmitHandler = () => {
     const myForm = new FormData();
@@ -118,7 +126,7 @@ const ProductDetails = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          {/* <MetaData title={`${product.name} -- ECOMMERCE`} /> */}
+          <MetaData title={`${product.name}`} />
           <div className="ProductDetails">
             <div>
               <Carousel>
@@ -153,16 +161,24 @@ const ProductDetails = ({ match }) => {
                 <div style={{ display: "flex", width: "100%", flexDirection: "column" }}>
                   <label>
                     Color:
-                    <select value={color} onChange={handleColorChange} style={{
-                      margin: "0px 0px 9px 10px",
-                      width: "181px",
-                      height: "35px",
-                      borderRadius: "7px",
-                      border: "2px inset tomato"
-                    }}>
-                      {product.color?.map((color) => (
-                        <option title={color}>{color}</option>
+                    <select
+                      value={color}
+                      // value={colorarr} 
+                      onChange={handleColorChange}
+                      style={{
+                        margin: "0px 0px 9px 10px",
+                        width: "181px",
+                        height: "35px",
+                        borderRadius: "7px",
+                        border: "2px inset tomato"
+                      }}>
+                      {/* {product.color?.map((color) => ( */}
+                      {product.color?.split(",")?.map(item => (
+                        <option title={item}>{item}</option>
                       ))}
+                      {/* // {colorarr?.map((color) => (
+                        // <option title={color}>{color}</option>
+                      ))} */}
                     </select>
                   </label>
                   <label>
@@ -174,8 +190,12 @@ const ProductDetails = ({ match }) => {
                       borderRadius: "7px",
                       border: "2px inset tomato"
                     }}>
-                      {product.size?.map((size) => (
+                      {/* {product.size?.map((size) => ( */}
+                      {/* {sizearr?.map((size) => (
                         <option title={size}>{size}</option>
+                      ))} */}
+                      {product.size?.split(",")?.map(item => (
+                        <option title={item}>{item}</option>
                       ))}
                     </select>
                   </label>
