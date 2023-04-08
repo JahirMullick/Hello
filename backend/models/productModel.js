@@ -6,13 +6,27 @@ const productSchema = mongoose.Schema({
     required: [true, "Please Enter product Name"],
     trim: true,
   },
+  // color: [
+  //   {
+  //     public_id: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     url: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //   },
+  // ],
   color: {
-    type: Array,
+    type: String,
     required: [true, "Please Enter product Color"],
+    trim: true,
   },
   size: {
-    type: Array,
+    type: String,
     required: [true, "Please Enter product Size"],
+    trim: true,
   },
   description: {
     type: String,
