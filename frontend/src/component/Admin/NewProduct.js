@@ -22,8 +22,8 @@ const NewProduct = ({ history }) => {
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
-  const [color, setColor] = useState([]);
-  const [size, setSize] = useState([]);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -62,60 +62,6 @@ const NewProduct = ({ history }) => {
   }, [dispatch, alert, error, history, success]);
 
 
-  // const handleColor = (e) => {
-  //   const input = e.target.value.split(",");
-  //   const colors = input.split(",").map(item => `"${item}"`).join(", ");
-  //   setColor(() => {
-  //     return colors;
-  //   });
-  // };
-  // const handleSize = (e) => {
-  //   const input = e.target.value.split(",");
-  //   const size = input.split(",").map(item => `"${item}"`).join(", ");
-  //   setSize(() => {
-  //     return size;
-  //   });
-  // };
-
-  const handleColor = (e) => {
-    const input = e.target.value;
-    if (typeof input === "string") {
-      const colorset = input.split(",").map(item => `"${item.trim()}"`).join(",");
-      setColor(colorset);
-      console.log(colorset);
-    }
-  };
-
-  const handleSize = (e) => {
-    const input = e.target.value;
-    if (typeof input === "string") {
-      const sizeset = input.split(",").map(item => `"${item.trim()}"`).join(",");
-      setSize(sizeset);
-      console.log(sizeset);
-    }
-  };
-
-  // const handleColor = (e) => {
-  //   setColor((prev) => [...prev, e.target.value.split(",")]);
-  // };
-
-  // const handleSize = (e) => {
-  //   setSize((prev) => [...prev, e.target.value.split(",")]);
-  // };
-
-  // const handleColor = (e) => {
-  //   const selectedColor = e.target.value.trim();
-  //   if (selectedColor && !color.includes(selectedColor)) {
-  //     setColor([...color, selectedColor]);
-  //   }
-  // };
-
-  // const handleSize = (e) => {
-  //   const selectedSize = e.target.value.trim();
-  //   if (selectedSize && !size.includes(selectedSize)) {
-  //     setSize([...size, selectedSize]);
-  //   }
-  // };
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -216,19 +162,29 @@ const NewProduct = ({ history }) => {
             <div>
               <PaletteIcon />
               <input
-                name="color"
-                placeholder="Color"
+                // type="color"
+                // placeholder="Color"
+                // required
+                // onChange={handleColor}
+                type="text"
+                placeholder="Product Color"
                 required
-                onChange={handleColor}
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
               />
             </div>
             <div>
               <BlurOnIcon />
               <input
-                name="size"
-                placeholder="Size"
+                // name="size"
+                // placeholder="Size"
+                // required
+                // onChange={handleSize}
+                type="text"
+                placeholder="Product Size"
                 required
-                onChange={handleSize}
+                value={size}
+                onChange={(e) => setSize(e.target.value)}
               />
             </div>
             <div>
