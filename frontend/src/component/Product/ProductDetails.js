@@ -163,7 +163,6 @@ const ProductDetails = ({ match }) => {
                     Color:
                     <select
                       value={color}
-                      // value={colorarr} 
                       onChange={handleColorChange}
                       style={{
                         margin: "0px 0px 9px 10px",
@@ -172,13 +171,10 @@ const ProductDetails = ({ match }) => {
                         borderRadius: "7px",
                         border: "2px inset tomato"
                       }}>
-                      {/* {product.color?.map((color) => ( */}
+                      <option className="FilterColor" title='color'>Select Color</option>
                       {product.color?.split(",")?.map(item => (
-                        <option title={item}>{item}</option>
+                        <option className="FilterColor" title={item}>{item}</option>
                       ))}
-                      {/* // {colorarr?.map((color) => (
-                        // <option title={color}>{color}</option>
-                      ))} */}
                     </select>
                   </label>
                   <label>
@@ -194,6 +190,7 @@ const ProductDetails = ({ match }) => {
                       {/* {sizearr?.map((size) => (
                         <option title={size}>{size}</option>
                       ))} */}
+                      <option className="FilterColor" title='size'>Select Size</option>
                       {product.size?.split(",")?.map(item => (
                         <option title={item}>{item}</option>
                       ))}
