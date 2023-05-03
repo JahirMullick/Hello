@@ -53,9 +53,9 @@ const ProductDetails = ({ match }) => {
 
 
 
-  const handleColorChange = (event) => {
-    setColor(event.target.value);
-  };
+  // const handleColorChange = (event) => {
+  //   setColor(event.target.value);
+  // };
 
   const handleSizeChange = (event) => {
     setSize(event.target.value);
@@ -159,7 +159,30 @@ const ProductDetails = ({ match }) => {
                 <h1>{`₹${product.price}`}</h1>
 
                 <div style={{ display: "flex", width: "100%", flexDirection: "column" }}>
+                  {/* <label>
+                    Color:
+                    <div onClick={handleColorChange}>
+                      {product.color?.split(",")?.map((item, index) => (
+                        <button key={index} >{item}</button>
+                      ))}
+                    </div>
+                  </label> */}
+                  {/* <div className="colors"> */}
                   <label>
+                    Color:
+                    {product.color?.split(",")?.map(curColor => {
+                      return (
+                        <button
+                          style={{ backgroundColor: curColor, height: '20px', width: '20px', borderRadius: '50%', margin: '0px 3px 0px 2px', alignItems: 'center', justifyContent: 'center' }}
+                          className={color === curColor ? "btnStyle active" : "btnStyle"}
+                          onClick={() => setColor(curColor)}>
+
+                        </button>
+                      );
+                    })}
+                  </label>
+                  {/* </div> */}
+                  {/* <label>
                     Color:
                     <select
                       value={color}
@@ -176,7 +199,7 @@ const ProductDetails = ({ match }) => {
                         <option className="FilterColor" title={item}>{item}</option>
                       ))}
                     </select>
-                  </label>
+                  </label> */}
                   <label>
                     Size:
                     <select value={size} onChange={handleSizeChange} style={{
